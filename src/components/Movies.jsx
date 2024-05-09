@@ -18,7 +18,7 @@ function ListOfMovies({movies}) {
 
 function NoMoviesResults() {
   return (
-    <p>No se encontraron peliculas para esta busqueda</p>
+    <p className="text-white">No se encontraron peliculas para esta busqueda</p>
   );
 }
 

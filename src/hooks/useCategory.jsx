@@ -6,9 +6,8 @@ function useCategory() {
   const selectAll = () => setCategory("");
   const selectMovies = () => setCategory("movie");
   const selectSeries = () => setCategory("series");
-  const selectEpisodes = () => setCategory("episode");
 
-  return {category, selectAll, selectEpisodes, selectMovies, selectSeries};
+  return {category, selectAll, selectMovies, selectSeries};
 }
 
 export default useCategory;
