@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-const API_KEY = "4287ad07";  
-
+const API_KEY = import.meta.env.VITE_API_KEY;  
 //import movie_response from "../mocks/movie-result.json";
 
 function View() {

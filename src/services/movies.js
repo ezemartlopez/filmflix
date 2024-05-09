@@ -1,4 +1,4 @@
-const API_KEY = "4287ad07";  
+const API_KEY = import.meta.env.VITE_API_KEY;  
 const NOT_IMAGE = "https://healthstrives.com/wp-content/themes/digiqole/assets/images/default_thumb.jpg";
 export async function searchMovies(search, category, actualPage){
 
