@@ -1,19 +1,18 @@
-/*
-import './App.css'
-import Movies from './components/Movies';
-import useMovies from './hooks/useMovies';
-import useSearch from './hooks/useSearch';
-import useCategory from './hooks/useCategory';
-import { useEffect, useRef, useState } from 'react';
-import logo from "./assets/logo_video.png";
-import usePagination from './hooks/usePagination';
-import Pagination from './components/Pagination';
-import IfBlock from './purecomponents/IfBlock';
-import Search from "./components/Search";
+import '../App.css';
+import Movies from '../components/Movies';
+import useMovies from '../hooks/useMovies';
+import useSearch from '../hooks/useSearch';
+import useCategory from '../hooks/useCategory';
+import { useEffect, useState } from 'react';
+import usePagination from '../hooks/usePagination';
+import Pagination from '../components/Pagination';
+import IfBlock from '../purecomponents/IfBlock';
+import Search from "../components/Search";
 
 
 
-function App() {
+
+function Home() {
   //https://www.omdbapi.com/?apikey=4287ad07&s=Avenger
   const {currentPage, handleNextPage, handlePrevPage, restartPagination} = usePagination();
   const {category, selectAll, selectEpisodes, selectMovies, selectSeries} = useCategory();
@@ -35,11 +34,7 @@ function App() {
     getMovies();
   }, [currentPage, category]);
   return (
-    <div className="w-full h-screen overflow-auto flex flex-col">
-      <header className="w-full py-4 flex flex-row justify-center items-center bg-yellow-500 gap-4">
-        <img src={logo} alt="Logo_img" className="size-14 mix-blend-multiply"/>
-        <h1 className="text-white font-bold text-5xl">Film-Flix</h1>
-      </header>
+    <>
       <nav className="flex justify-center bg-neutral-800">
           <button onClick={()=> {selectAll(); restartPagination();}} className={`text-white w-[150px] font-bold py-2 transition-colors duration-500 ${category === ''?'bg-yellow-500':'' }` } >Todos</button>
           <button onClick={()=>{selectMovies(); restartPagination();}} className={`text-white w-[150px] font-bold py-2 transition-colors duration-500 ${category === 'movie'?'bg-yellow-500':'' }` }>Peliculas</button>
@@ -64,7 +59,6 @@ function App() {
             <p>Cargando...</p>
           </IfBlock>
         </div>
-        
       </main>
       <footer className='bg-neutral-800 text-white flex justify-center'>
       <Pagination
@@ -74,18 +68,8 @@ function App() {
         decrementPage={handlePrevPage}
       />
       </footer>
-    </div>
-  )
-}
-*/
-
-import RouterApp from "./routes/RouterApp"
-
-
-function App() {
-  return (
-    <RouterApp></RouterApp>
+    </>
   )
 }
 
-export default App;
+export default Home;

@@ -24,3 +24,9 @@ export async function searchMovies(search, category, actualPage){
     return {responseMovies:mappedMovies, results: json.totalResults};
         
 }
+
+export async function getMovie(id){
+    const res = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&i=${id}&plot=full`);
+    const json = await res.json();
+    
+}
