@@ -27,13 +27,13 @@ function View() {
   <div className="w-full h-full bg-neutral-900 text-white flex justify-center">
     <div className="w-full max-w-[1280px] h-full">
       <div className="w-full px-3 py-4 flex justify-end">
-        <a href='/' className="bg-slate-600 hover:bg-slate-700 font-semibold py-1 px-4 rounded-md">Regresar</a>
+        <a href='/' className="bg-yellow-500 hover:bg-yellow-600 font-semibold py-1 px-6 rounded-md">Return</a>
       </div>
       <div className="grid grid-cols-12 grid-rows-2 lg:grid-rows-1 h-auto">
         <div className="py-4 col-span-12 lg:col-span-4  flex justify-center items-center">
           <img src={image} alt="Image" className="max-w-[350px] w-full h-[500px] rounded-md"/>
         </div>
-        <div className="min-h-[500px] px-4 lg:h-[500px] col-span-12 lg:col-span-8">
+        <div className="min-h-[500px] px-7 lg:px-4 lg:h-[500px] col-span-12 lg:col-span-8">
           <div className="w-full">
             <h1 className="text-3xl font-bold">{title}</h1>
           </div>
@@ -64,19 +64,19 @@ function View() {
             <p className="text-white/85">{description}</p> 
             <ul className="flex flex-col gap-2 pb-8">
               <li className="w-full flex">
-                <span className="min-w-[100px] text-slate-400/80 font-medium">Actores: </span> <span className="text-pretty">{actors}</span>
+                <span className="min-w-[100px] text-slate-400/80 font-medium">Actors: </span> <span className="text-pretty">{actors}</span>
               </li>
               <li className="w-full flex">
-                <span className="min-w-[100px] text-slate-400/80 font-medium">Dirección: </span> <span className="text-pretty">{director}</span>
+                <span className="min-w-[100px] text-slate-400/80 font-medium">Direction: </span> <span className="text-pretty">{director}</span>
               </li>
               <li className="w-full flex">
-                <span className="min-w-[100px] text-slate-400/80 font-medium">Género: </span> <span className="text-pretty">{genre}</span>
+                <span className="min-w-[100px] text-slate-400/80 font-medium">Genre: </span> <span className="text-pretty">{genre}</span>
               </li>
               <li className="w-full flex">
-                <span className="min-w-[100px] text-slate-400/80 font-medium">Tipo: </span> <span className="text-pretty">{type==="movie"?"Pelicula":"Serie"}</span>
+                <span className="min-w-[100px] text-slate-400/80 font-medium">Type: </span> <span className="text-pretty">{type==="movie"?"Pelicula":"Serie"}</span>
               </li>
               <li className="w-full flex">
-                <span className="min-w-[100px] text-slate-400/80 font-medium">Lenguajes: </span> <span className="text-pretty">{language}</span>
+                <span className="min-w-[100px] text-slate-400/80 font-medium">Languages: </span> <span className="text-pretty">{language}</span>
               </li>
             </ul> 
           </div>
