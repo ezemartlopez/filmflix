@@ -9,11 +9,7 @@ import Pagination from '../components/Pagination';
 import IfBlock from '../purecomponents/IfBlock';
 import Search from "../components/Search";
 
-
-
-
 function Home() {
-  //https://www.omdbapi.com/?apikey=4287ad07&s=Avenger
   const {currentPage, handleNextPage, handlePrevPage, restartPagination} = usePagination();
   const {category, selectAll, selectMovies, selectSeries} = useCategory();
   const {search, updateSearch, error} = useSearch();
