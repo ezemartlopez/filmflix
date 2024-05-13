@@ -48,7 +48,7 @@ function Home() {
       <div className="w-full px-[20px] flex flex-col items-center gap-2">
         <div className="max-w-[1000px] w-full mt-4 flex flex-col gap-4">
           <h2 className="text-4xl text-white font-bold">Welcome to Film-Flix</h2>
-          <p className="text-xl text-slate-300">Film-Flix is a search engine designed to help you discover and explore movies effortlessly. Search for your favorite films or series and uncover detailed information and more.</p>
+          <p className="text-xl text-slate-300">Film-Flix is a search engine designed to help you to discover and explore movies easy. Search for your favorite films or series and uncover detailed information and more.</p>
         </div>
         <Search search={search} handleChange={handleChange} handleSubmit={handleSubmit}/>
         {error && <p className="text-red-500">{error}</p>}
