@@ -1,7 +1,8 @@
-const API_KEY = import.meta.env.VITE_API_KEY;  
-const NOT_IMAGE = "https://healthstrives.com/wp-content/themes/digiqole/assets/images/default_thumb.jpg";
+import NotImageMovie from "../assets/notImageMovie.png";
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 export async function searchMovies(search, category, actualPage){
+    search = search.trim();
 
     if(search === ""){
         throw new Error("No puede buscar con un texto vacio");
@@ -19,7 +20,7 @@ export async function searchMovies(search, category, actualPage){
         id: movie.imdbID,
         title: movie.Title,
         year: movie.Year,
-        poster: movie.Poster==="N/A"? NOT_IMAGE: movie.Poster
+        poster: movie.Poster==="N/A"? NotImageMovie: movie.Poster
     }));
 
     return {responseMovies:mappedMovies, results: json.totalResults};
