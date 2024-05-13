@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { fetchMovie } from '../services/movies';
 const API_KEY = import.meta.env.VITE_API_KEY;  
 //import movie_response from "../mocks/movie-result.json";
 
@@ -8,26 +9,9 @@ function View() {
     const [movie, setMovie] = useState({});
     const getMovie = async () =>{
         try {
-            const res = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&i=${id}&plot=full`);
-            const json = await res.json();
-            const movie_response = json;
-            const mappedMovie = {
-              title: movie_response.Title,
-              image: movie_response.Poster,
-              description: movie_response.Plot,
-              rating: movie_response.imdbRating,
-              year: movie_response.Year,
-              runtime: movie_response.Runtime,
-              rated: movie_response.Rated,
-              actors: movie_response.Actors,
-              director: movie_response.Director,
-              genre: movie_response.Genre,
-              votes: movie_response.imdbVotes,
-              language: movie_response.Language,
-              type: movie_response.Type
-            }
-            setMovie(mappedMovie);
-            console.log(mappedMovie);  
+            const responseMovie = await fetchMovie(id);
+            setMovie(responseMovie);
+            //console.log(responseMovie);  
         } catch (error) {
             console.log(error);
         }
@@ -39,7 +23,7 @@ function View() {
 
 
   const {title, image, description, rating, year, runtime, rated, actors, director, genre, votes, language, type} = movie;
-  return (
+  return (Object.keys(movie).length > 0?
   <div className="w-full h-full bg-neutral-900 text-white flex justify-center">
     <div className="w-full max-w-[1280px] h-full">
       <div className="w-full px-3 py-4 flex justify-end">
@@ -100,6 +84,7 @@ function View() {
       </div>
     </div>
     </div>
+    : <p>Cargando ...</p>
   );
 }
 
