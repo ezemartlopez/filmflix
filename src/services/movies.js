@@ -1,5 +1,6 @@
 const API_KEY = import.meta.env.VITE_API_KEY;  
 const NOT_IMAGE = "https://healthstrives.com/wp-content/themes/digiqole/assets/images/default_thumb.jpg";
+
 export async function searchMovies(search, category, actualPage){
 
     if(search === ""){
@@ -25,8 +26,28 @@ export async function searchMovies(search, category, actualPage){
         
 }
 
-export async function getMovie(id){
-    const res = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&i=${id}&plot=full`);
-    const json = await res.json();
-    
+export async function fetchMovie(id) {
+    try {
+        const res = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&i=${id}&plot=full`);
+        const json = await res.json();
+        const mappedMovie = {
+            title: json.Title,
+            image: json.Poster,
+            description: json.Plot,
+            rating: json.imdbRating,
+            year: json.Year,
+            runtime: json.Runtime,
+            rated: json.Rated,
+            actors: json.Actors,
+            director: json.Director,
+            genre: json.Genre,
+            votes: json.imdbVotes,
+            language: json.Language,
+            type: json.Type
+        };
+        return mappedMovie;
+    } catch (error) {
+        console.error('Error fetching movie:', error);
+        throw new Error('Failed to fetch movie data');
+    }
 }
