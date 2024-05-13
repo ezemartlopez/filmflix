@@ -62,7 +62,7 @@ function View() {
           
           <div className="pt-6 flex flex-col gap-6">
             <p className="text-white/85">{description}</p> 
-            <ul className="flex flex-col gap-2">
+            <ul className="flex flex-col gap-2 pb-8">
               <li className="w-full flex">
                 <span className="min-w-[100px] text-slate-400/80 font-medium">Actores: </span> <span className="text-pretty">{actors}</span>
               </li>
