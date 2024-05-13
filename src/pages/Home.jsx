@@ -9,6 +9,15 @@ import Pagination from '../components/Pagination';
 import IfBlock from '../purecomponents/IfBlock';
 import Search from "../components/Search";
 
+function limpiarEspacios(cadena) {
+  // Eliminar espacios al principio y final
+  //cadena = cadena.trim();
+  // Eliminar espacios adicionales entre palabras
+  cadena = cadena.replace(/\s+/g, " ");
+  return cadena;
+}
+
+
 function Home() {
   const {currentPage, handleNextPage, handlePrevPage, restartPagination} = usePagination();
   const {category, selectAll, selectMovies, selectSeries} = useCategory();
@@ -23,7 +32,7 @@ function Home() {
   }
   const handleChange = (event) =>{
     const value = event.target.value;
-    updateSearch(value);
+    updateSearch(limpiarEspacios(value));
   }
 
   useEffect(() => {
@@ -32,14 +41,14 @@ function Home() {
   return (
     <>
       <nav className="flex justify-center">
-          <button onClick={()=> {selectAll(); restartPagination();}} className={`text-white w-[150px] font-bold py-2 transition-colors duration-500 ${category === ''?'bg-yellow-500':'' }` } >Todos</button>
-          <button onClick={()=>{selectMovies(); restartPagination();}} className={`text-white w-[150px] font-bold py-2 transition-colors duration-500 ${category === 'movie'?'bg-yellow-500':'' }` }>Peliculas</button>
+          <button onClick={()=> {selectAll(); restartPagination();}} className={`text-white w-[150px] font-bold py-2 transition-colors duration-500 ${category === ''?'bg-yellow-500':'' }` } >All</button>
+          <button onClick={()=>{selectMovies(); restartPagination();}} className={`text-white w-[150px] font-bold py-2 transition-colors duration-500 ${category === 'movie'?'bg-yellow-500':'' }` }>Movies</button>
           <button onClick={()=>{selectSeries(); restartPagination();}} className={`text-white w-[150px] font-bold py-2 transition-colors duration-500 ${category === 'series'?'bg-yellow-500':'' }` }>Series</button>
       </nav>
       <div className="w-full px-[20px] flex flex-col items-center gap-2">
         <div className="max-w-[1000px] w-full mt-4 flex flex-col gap-4">
-          <h2 className="text-4xl text-white font-bold">Bienvenido a Film-Flix</h2>
-          <p className="text-xl text-slate-300">Film-Flix es tu herramienta para descubrir y explorar películas de forma sencilla. Busca tus películas favoritas, series o episodios, encuentra información detallada y más.</p>
+          <h2 className="text-4xl text-white font-bold">Welcome to Film-Flix</h2>
+          <p className="text-xl text-slate-300">Film-Flix is a search engine designed to help you discover and explore movies effortlessly. Search for your favorite films or series and uncover detailed information and more.</p>
         </div>
         <Search search={search} handleChange={handleChange} handleSubmit={handleSubmit}/>
         {error && <p className="text-red-500">{error}</p>}
