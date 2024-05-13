@@ -1,7 +1,10 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import { getStorageItem, setStorageItem } from "../functions/Session";
+
+const IDENTIFIER = "page"
 
 function usePagination() {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(getStorageItem(IDENTIFIER, 1));
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
   };
@@ -12,6 +15,12 @@ function usePagination() {
   const restartPagination = () =>{
     setCurrentPage(1);
   }
+
+  useEffect(() => {
+    setStorageItem(IDENTIFIER, currentPage);
+  }, [currentPage])
+  
+
   return {currentPage, handleNextPage, handlePrevPage, restartPagination};
 }
 

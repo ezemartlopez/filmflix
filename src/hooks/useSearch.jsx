@@ -1,7 +1,10 @@
 import {useState, useEffect, useRef} from 'react';
+import { getStorageItem, setStorageItem } from "../functions/Session";
+
+const IDENTIFIER = "search";
 
 function useSearch() {
-    const [search, setSearch] = useState("");//forma controlada de manejar inputs
+    const [search, setSearch] = useState(getStorageItem(IDENTIFIER, ""));//forma controlada de manejar inputs
     const [error, seterror] = useState("");
     const isFirstInput = useRef(true);
   
@@ -24,6 +27,7 @@ function useSearch() {
         return;
       }
       seterror(null);
+      setStorageItem(IDENTIFIER, search);
     }, [search])
   
     return {search, updateSearch:setSearch, error}
